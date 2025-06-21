@@ -1,7 +1,26 @@
-FROM node:22-slim
+# First stage
+FROM node:22-alpine AS builder  
+WORKDIR /app
+COPY app/ ./
+RUN   yarn install && yarn build
 
-COPY app/
+# Second stage 
+FROM node:22-alpine
+WORKDIR /app
+RUN yarn global add serve
+COPY --from=builder /app/build ./build
+EXPOSE 3000
+CMD ["serve", "-s", "build", "-l", "3000"]
 
-RUN   
 
-CMD [ "executable" ]
+
+# Note to self
+# Download base image first.
+# yarn is a package manager for Javascript the way pip is for Python
+# to reduce the image size, use multistage build, add .gitignore in the same root folder as docker file, alpine image, combine run commands.
+# docker build -t threat-model .
+# docker run -p 3000:3000 threat-model
+# If you want to run the image without logs add p (docker run -d -p 3000:3000 threat-model)
+# docker ps
+# docker stop <container_id>
+
