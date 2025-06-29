@@ -1,11 +1,11 @@
 # First stage
-FROM node:22-alpine AS builder  
+FROM node:18-alpine AS builder  
 WORKDIR /app
 COPY app/ ./
 RUN   yarn install && yarn build
 
 # Second stage 
-FROM node:22-alpine
+FROM node:18-alpine
 WORKDIR /app
 RUN yarn global add serve
 COPY --from=builder /app/build ./build
