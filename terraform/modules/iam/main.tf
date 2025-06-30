@@ -15,21 +15,30 @@ resource "aws_iam_role" "this" {
 }
 
 resource "aws_iam_role_policy" "this" {
-  name = "test_policy"
+  name = "ecs-task-basic-policy"
   role = aws_iam_role.this.id
 
-  # Terraform's "jsonencode" function converts a
-  # Terraform expression result to valid JSON syntax.
   policy = jsonencode({
-    Version = "2012-10-17"
+    Version = "2012-10-17",
     Statement = [
       {
+        Effect = "Allow",
         Action = [
-          "ec2:Describe*",
-        ]
-        Effect   = "Allow"
+          "logs:CreateLogStream",
+          "logs:PutLogEvents",
+          "logs:CreateLogGroup"
+        ],
         Resource = "*"
       },
+      {
+        Effect = "Allow",
+        Action = [
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:BatchGetImage",
+          "ecr:GetAuthorizationToken"
+        ],
+        Resource = "*"
+      }
     ]
   })
 }
