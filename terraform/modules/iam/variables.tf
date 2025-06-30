@@ -1,10 +1,10 @@
 variable "cluster_name" {
-    description = "Name of the ECS cluster"
+    description = "ECS cluster name"
     type = string
 }
 
 variable "service_name" {
-    description = "Name of the ECS service"
+    description = "ECS service name"
     type = string
 }
 

@@ -20,7 +20,7 @@ resource "aws_ecs_service" "this" {
   }
 
   load_balancer {
-    target_group_arn = aws_lb_target_group.foo.arn
+    target_group_arn = aws_lb_target_group.this.arn
     container_name   = "this"
     container_port   = 8080
   }
@@ -31,7 +31,7 @@ resource "aws_ecs_service" "this" {
   }
 }
 
-resource "aws_ecs_task_definition" "service" {
+resource "aws_ecs_task_definition" "this" {
   family = "service"
   container_definitions = jsonencode([
     {
