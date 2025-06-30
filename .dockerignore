@@ -8,3 +8,5 @@ Dockerfile
 .env
 app/node_modules
 app/.gitapp/.vscode
+
+

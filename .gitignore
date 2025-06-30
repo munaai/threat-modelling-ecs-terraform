@@ -1,0 +1,10 @@
+variables.tfvars
+variables.tfvars
+terraform.tfvars
+*.tfvars
+*.tfstate
+*.tfstate.*
+.crash
+.terraform/
+terraform.tfvars
+terraform.tfvars
