@@ -1,12 +1,12 @@
 resource "aws_iam_role" "this" {
-  name = "this-role"
+  name = var.role_name
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
     Statement = [{
       Action = "sts:AssumeRole",
       Principal = {
-        Service = "ecs-tasks.amazonaws.com"
+        Service = var.assume_service
       },
       Effect = "Allow",
       Sid    = "",
@@ -15,7 +15,7 @@ resource "aws_iam_role" "this" {
 }
 
 resource "aws_iam_role_policy" "this" {
-  name = "ecs-task-basic-policy"
+  name = var.policy_name
   role = aws_iam_role.this.id
 
   policy = jsonencode({

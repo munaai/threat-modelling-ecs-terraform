@@ -16,4 +16,7 @@ module "ecs" {
 
 module "iam" {
   source = "./modules/iam"
+  role_name = var.role_name
+  assume_service = var.assume_service
+  policy_name = var.policy_name
 }
