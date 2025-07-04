@@ -49,3 +49,18 @@ variable "listener_port" {
 variable "listener_protocol" {
   default = "HTTP"
 }
+variable "certificate_arn" {
+  description = "ARN of the ACM certificate"
+  type        = string
+}
+
+variable "ssl_policy" {
+  default = "ELBSecurityPolicy-2016-08"
+}
+variable "https_listener_port" {
+  default = 443
+}
+
+variable "https_listener_protocol" {
+  default = "HTTPS"
+}

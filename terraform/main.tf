@@ -40,7 +40,10 @@ module "ecs" {
   task_cpu = var.task_cpu
   task_memory = var.task_memory
   image_url = var.image_url
-  iam_role_arn = module.iam.execution_role_arn #passed from iam output
+  execution_role_arn = module.iam.execution_role_arn
+  target_group_arn   = module.elb.target_group_arn
+  subnet_ids         = var.public_subnet_ids
+  security_group_ids = [module.security_groups.ecs_sg_id]
 }
 
 module "elb" {
@@ -49,7 +52,7 @@ module "elb" {
   alb_name                  = var.alb_name
   alb_internal              = var.alb_internal
   alb_deletion_protection   = var.alb_deletion_protection
-  alb_security_group_ids    = var.alb_security_group_ids
+  alb_security_group_ids = [module.security_groups.alb_sg_id]
   public_subnet_ids         = var.public_subnet_ids
   vpc_id                    = var.vpc_id
 
@@ -66,16 +69,30 @@ module "elb" {
 
   listener_port     = var.listener_port
   listener_protocol = var.listener_protocol
+
+  certificate_arn        = module.acm.certificate_arn
+  https_listener_port    = var.https_listener_port
+  https_listener_protocol = var.https_listener_protocol
+  ssl_policy             = var.ssl_policy
 }
 
 module "route53" {
-  source = "./modules/route53"
-
-  hosted_zone_id   = var.hosted_zone_id
-  record_name      = var.record_name
-  alb_dns_name     = module.elb.alb_dns_name
-  alb_zone_id      = module.elb.alb_zone_id
-  record_type      = var.record_type
+  source         = "./modules/route53"
+  hosted_zone_id = var.hosted_zone_id
+  record_name    = var.record_name
+  alb_dns_name   = module.elb.alb_dns_name
+  alb_zone_id    = module.elb.alb_zone_id
+  record_type    = var.record_type
 }
+module "acm" {
+  source         = "./modules/acm"
+  domain_name    = var.record_name
+  hosted_zone_id = var.hosted_zone_id
+  tags = {
+    Project = "ThreatModelling"
+    Owner   = "Muna"
+  }
+}
+
 
 

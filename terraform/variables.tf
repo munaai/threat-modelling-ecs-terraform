@@ -52,6 +52,9 @@ variable "image_url" {
     description = "link of the image in ecr"
     type = string
 }
+variable "public_subnet_ids" {
+  type = list(string)
+}
 
 variable "role_name" {
     description = "IAM role name"
@@ -133,13 +136,7 @@ variable "alb_deletion_protection" {
   type    = bool
   default = false
 }
-variable "alb_security_group_ids" {
-  type = list(string)
-}
 
-variable "public_subnet_ids" {
-  type = list(string)
-}
 variable "target_group_name" {}
 variable "target_group_protocol" {
   default = "HTTP"
@@ -173,11 +170,22 @@ variable "listener_protocol" {
 variable "hosted_zone_id" {}
 
 variable "record_name" {}
-
-variable "alb_dns_name" {}
-
-variable "alb_zone_id" {}
 variable "record_type" {
   default = "A"
+}
+variable "certificate_arn" {
+  description = "ARN of the ACM certificate"
+  type        = string
+}
+
+variable "ssl_policy" {
+  default = "ELBSecurityPolicy-2016-08"
+}
+variable "https_listener_port" {
+  default = 443
+}
+
+variable "https_listener_protocol" {
+  default = "HTTPS"
 }
 
