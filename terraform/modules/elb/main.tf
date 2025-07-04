@@ -1,34 +1,34 @@
 resource "aws_lb" "this" {
-  name               = "app-alb"
-  internal           = false
+  name               = var.alb_name
+  internal           = var.alb_internal
   load_balancer_type = "application"
   subnets            = var.public_subnet_ids
-  security_groups    = [aws_security_group.lb.id]
+  security_groups    = var.alb_security_group_ids
 
-  enable_deletion_protection = false
+  enable_deletion_protection = var.alb_deletion_protection
 }
 
 resource "aws_lb_target_group" "this" {
-  name     = "app-tg"
-  port     = 8080
-  protocol = "HTTP"
-  vpc_id   = var.vpc_id
-
+  name        = var.target_group_name
+  port        = var.container_port
+  protocol    = var.target_group_protocol
+  vpc_id      = var.vpc_id
   target_type = "ip"
+
   health_check {
-    path                = "/"
-    interval            = 30
-    timeout             = 5
-    healthy_threshold   = 2
-    unhealthy_threshold = 2
-    matcher             = "200"
+    path                = var.health_check_path
+    interval            = var.health_check_interval
+    timeout             = var.health_check_timeout
+    healthy_threshold   = var.health_check_healthy_threshold
+    unhealthy_threshold = var.health_check_unhealthy_threshold
+    matcher             = var.health_check_matcher
   }
 }
 
 resource "aws_lb_listener" "this" {
   load_balancer_arn = aws_lb.this.arn
-  port              = 80
-  protocol          = "HTTP"
+  port              = var.listener_port
+  protocol          = var.listener_protocol
 
   default_action {
     type             = "forward"
