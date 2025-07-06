@@ -10,7 +10,7 @@ module "security_groups" {
 
     alb_sg_name = var.alb_sg_name
     alb_sg_description = var.alb_sg_description
-    vpc_id = var.vpc_id
+    vpc_id = module.vpc.vpc_id
     alb_ingress_http_from_port = var.alb_ingress_http_from_port
     alb_ingress_http_to_port = var.alb_ingress_http_to_port
     alb_ingress_cidr_blocks = var.alb_ingress_cidr_blocks
@@ -42,7 +42,7 @@ module "ecs" {
   image_url = var.image_url
   execution_role_arn = module.iam.execution_role_arn
   target_group_arn   = module.elb.target_group_arn
-  subnet_ids         = var.public_subnet_ids
+  subnet_ids         = module.vpc.public_subnet_ids
   security_group_ids = [module.security_groups.ecs_sg_id]
 }
 
@@ -53,8 +53,8 @@ module "elb" {
   alb_internal              = var.alb_internal
   alb_deletion_protection   = var.alb_deletion_protection
   alb_security_group_ids = [module.security_groups.alb_sg_id]
-  public_subnet_ids         = var.public_subnet_ids
-  vpc_id                    = var.vpc_id
+  public_subnet_ids         = module.vpc.public_subnet_ids
+  vpc_id                    = module.vpc.vpc_id
 
   target_group_name             = var.target_group_name
   target_group_protocol         = var.target_group_protocol
@@ -93,6 +93,16 @@ module "acm" {
     Owner   = "Muna"
   }
 }
+
+module "vpc" {
+  source = "./modules/vpc"
+
+  vpc_cidr_block      = var.vpc_cidr_block
+  public_subnet_cidrs = var.public_subnet_cidrs
+  azs                 = var.azs
+  tags                = var.tags
+}
+
 
 
 

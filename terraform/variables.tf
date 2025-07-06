@@ -52,9 +52,6 @@ variable "image_url" {
     description = "link of the image in ecr"
     type = string
 }
-variable "public_subnet_ids" {
-  type = list(string)
-}
 
 variable "role_name" {
     description = "IAM role name"
@@ -73,9 +70,6 @@ variable "alb_sg_name" {
     type = string
 }
 variable "alb_sg_description" {
-    type = string
-}
-variable "vpc_id" {
     type = string
 }
 
@@ -188,4 +182,25 @@ variable "https_listener_port" {
 variable "https_listener_protocol" {
   default = "HTTPS"
 }
+
+variable "vpc_cidr_block" {
+  description = "CIDR block for the VPC"
+  type        = string
+}
+
+variable "public_subnet_cidrs" {
+  description = "List of CIDR blocks for public subnets"
+  type        = list(string)
+}
+
+variable "azs" {
+  description = "List of availability zones to use"
+  type        = list(string)
+}
+
+variable "tags" {
+  description = "Tags to apply to all resources"
+  type        = map(string)
+}
+
 
