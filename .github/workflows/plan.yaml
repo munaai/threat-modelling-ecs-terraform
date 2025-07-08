@@ -30,11 +30,11 @@ jobs:
       - name: Change to Terraform directory
         run: cd terraform
 
-      - name: Terraform Init
-        run: terraform init
+      - name: Download tfvars
+        run: aws s3 cp s3://my-terraform-config-bucket/production.tfvars terraform/production.tfvars
         working-directory: terraform
 
-      - name: Terraform Plan
-        run: terraform plan
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -var-file="production.tfvars"
         working-directory: terraform
 
