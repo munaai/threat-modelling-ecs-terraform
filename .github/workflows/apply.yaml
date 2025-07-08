@@ -3,29 +3,29 @@ name: Terraform Apply
 on:
   workflow_dispatch:
 
+env:
+  AWS_REGION: eu-west-2
+
 jobs:
   terraform-apply:
+    name: Terraform Apply
     runs-on: ubuntu-latest
 
-    env:
-      AWS_REGION: eu-west-2
-
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: AWS Credentials
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v3
-
       - name: Terraform Init
-        run: terraform init -reconfigure
+        run: terraform init
+        working-directory: terraform
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
+        working-directory: terraform
