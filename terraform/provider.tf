@@ -2,30 +2,20 @@
 terraform {
   required_providers {
     aws = {
-      source = "hashicorp/aws"
+      source  = "hashicorp/aws"
       version = "6.0.0-beta1"
     }
   }
-}
-resource "aws_s3_bucket" "tfvars_config" {
-  bucket = "my-terraform-config-bucket-muna"
-  force_destroy = true
-  tags = {
-    Name = "Terraform tfvars bucket"
-  }
-  lifecycle {
-    prevent_destroy = true
-    ignore_changes  = [bucket]
+
+  backend "s3" {
+    bucket         = "my-terraform-config-bucket-muna"
+    key            = "state/devops-lab/terraform.tfstate"
+    region         = "eu-west-2"
+    encrypt        = true
+    dynamodb_table = "terraform-locks" # Optional but recommended
   }
 }
-resource "aws_s3_bucket_public_access_block" "tfvars_config_block" {
-  bucket = aws_s3_bucket.tfvars_config.id
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
-}
-# Provider block - Tells terraform which cloud provider to interract with
+
 provider "aws" {
-  # Configuration options
+  region = "eu-west-2" # make sure this is set
 }
