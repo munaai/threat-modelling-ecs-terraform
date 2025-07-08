@@ -24,9 +24,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Download tfvars
+      - name: Download tfvars file from S3
         run: aws s3 cp s3://my-terraform-config-bucket-muna/terraform.tfvars terraform/terraform.tfvars
-        working-directory: terraform    
+    
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
