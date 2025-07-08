@@ -27,7 +27,9 @@ jobs:
 
       - name: Download tfvars file from S3
         run: aws s3 cp s3://my-terraform-config-bucket-muna/terraform.tfvars terraform/terraform.tfvars
-   
+
+      - name: 📥 Setup Terraform
+        uses: hashicorp/setup-terraform@v2
 
       - name: Terraform Init
         run: terraform init
