@@ -13,6 +13,10 @@ resource "aws_s3_bucket" "tfvars_config" {
   tags = {
     Name = "Terraform tfvars bucket"
   }
+  lifecycle {
+    prevent_destroy = true
+    ignore_changes  = [bucket]
+  }
 }
 resource "aws_s3_bucket_public_access_block" "tfvars_config_block" {
   bucket = aws_s3_bucket.tfvars_config.id
