@@ -23,9 +23,9 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
-          
+
       - name: Download tfvars
-        run: aws s3 cp s3://my-terraform-config-bucket/production.tfvars terraform/production.tfvars
+        run: aws s3 cp s3://my-terraform-config-bucket-muna/terraform.tfvars terraform/terraform.tfvars
         working-directory: terraform    
 
       - name: Setup Terraform
@@ -35,6 +35,6 @@ jobs:
         run: cd terraform
 
       - name: Terraform Apply
-        run: terraform apply -auto-approve -var-file="production.tfvars"
+        run: terraform apply -auto-approve -var-file="terraform.tfvars"
         working-directory: terraform
 
