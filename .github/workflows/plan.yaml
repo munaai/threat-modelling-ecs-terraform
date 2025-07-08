@@ -23,16 +23,16 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
+          
+      - name: Download tfvars
+        run: aws s3 cp s3://my-terraform-config-bucket/production.tfvars terraform/production.tfvars
+        working-directory: terraform    
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
       - name: Change to Terraform directory
         run: cd terraform
-
-      - name: Download tfvars
-        run: aws s3 cp s3://my-terraform-config-bucket/production.tfvars terraform/production.tfvars
-        working-directory: terraform
 
       - name: Terraform Apply
         run: terraform apply -auto-approve -var-file="production.tfvars"
