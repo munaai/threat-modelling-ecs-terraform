@@ -1,1 +1,3 @@
 # Threat modelling tool
+
+Structure
