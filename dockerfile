@@ -14,6 +14,11 @@ CMD ["serve", "-s", "build", "-l", "3000"]
 
 
 
+
+
+
+
+
 # Note to self
 # Download base image first.
 # yarn is a package manager for Javascript the way pip is for Python

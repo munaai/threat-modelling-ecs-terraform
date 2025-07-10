@@ -78,3 +78,17 @@ Then visit: http://localhost:3000
 
 ### Terraform Destroy
 - Destroys all infrastructure managed by Terraform when no longer required
+
+## Here is a demonstration
+### Domain page
+<p align="center">
+  <img src="Front-end.jpg" alt="architechtural diagram" style="width:600px"/>
+</p>
+
+### SSL certificate
+### Docker Build and Push to ECR
+### Terraform Deploy
+### Teraform Destroy
+<p align="center">
+  <img src="terraform-destroy.jpg" alt="architechtural diagram" style="width:600px"/>
+</p>

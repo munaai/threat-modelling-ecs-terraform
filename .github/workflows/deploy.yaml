@@ -6,13 +6,16 @@ on:
     workflows: ["Docker Build & Push"]
     types:
       - completed
+  push:
+    paths:
+      - 'terraform/**'
 
 env:
   AWS_REGION: eu-west-2
 
 jobs:
   terraform:
-    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name != 'workflow_run' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -32,19 +35,18 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
 
-      - name: 📐 Terraform Format Check
+      - name: Terraform Format Check
         run: terraform fmt -check -recursive
         working-directory: terraform
 
-      - name: ✅ Terraform Lint (optional but recommended)
-        uses: terraform-linters/setup-tflint@v4
-        with:
-          tflint_version: latest
-
-      - name: 🧪 Run TFLint
-        run: tflint --init && tflint
+      - name: Install and Run TFLint
+        run: |
+          curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+          export PATH=$PATH:$(pwd)
+          tflint --version
+          tflint --init
+          tflint --format stylish
         working-directory: terraform
-
 
       - name: Terraform Init
         run: terraform init
@@ -57,3 +59,6 @@ jobs:
       - name: Terraform Apply
         run: terraform apply -auto-approve -var-file="terraform.tfvars"
         working-directory: terraform
+
+      - name: Summary
+        run: echo "### ✅ Terraform Plan & Apply Completed" >> $GITHUB_STEP_SUMMARY
