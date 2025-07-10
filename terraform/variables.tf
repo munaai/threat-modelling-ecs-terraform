@@ -1,83 +1,83 @@
 variable "cluster_name" {
-    description = "Name of the ECS cluster"
-    type = string
+  description = "Name of the ECS cluster"
+  type        = string
 }
 
 variable "service_name" {
-    description = "Name of the ECS service"
-    type = string
+  description = "Name of the ECS service"
+  type        = string
 }
 
 variable "desired_count" {
-    description = "Number of desired ECS tasks"
-    type = number
+  description = "Number of desired ECS tasks"
+  type        = number
 }
 
 variable "cluster_insight_name" {
-    description = "name of the cluster setting name"
-    type = string 
+  description = "name of the cluster setting name"
+  type        = string
 }
 
 variable "cluster_insight_value" {
-    description = "name of the cluster setting value"
-    type = string 
+  description = "name of the cluster setting value"
+  type        = string
 }
 
 variable "container_name" {
-    description = "name of the container"
-    type = string 
+  description = "name of the container"
+  type        = string
 }
 
 variable "container_port" {
-    description = "container port"
-    type = number 
+  description = "container port"
+  type        = number
 }
 
 variable "task_family" {
-    description = "family name"
-    type = string
+  description = "family name"
+  type        = string
 }
 
 variable "task_cpu" {
-    description = "cpu"
-    type = string
+  description = "cpu"
+  type        = string
 }
 
 variable "task_memory" {
-    description = "memory"
-    type = string
+  description = "memory"
+  type        = string
 }
 
 variable "image_url" {
-    description = "link of the image in ecr"
-    type = string
+  description = "link of the image in ecr"
+  type        = string
 }
 
 variable "role_name" {
-    description = "IAM role name"
-    type = string
+  description = "IAM role name"
+  type        = string
 }
 
 variable "assume_service" {
-    type = string
+  type = string
 }
 
 variable "policy_name" {
-    type = string
+  type = string
 }
 
 variable "alb_sg_name" {
-    type = string
+  type = string
 }
 variable "alb_sg_description" {
-    type = string
+  type = string
 }
 
 variable "alb_ingress_http_from_port" {
-    type = number
+  type = number
 }
 variable "alb_ingress_http_to_port" {
-    type = number
+  type = number
 }
 
 variable "alb_ingress_cidr_blocks" {
@@ -86,10 +86,10 @@ variable "alb_ingress_cidr_blocks" {
 }
 
 variable "alb_ingress_https_from_port" {
-    type = number
+  type = number
 }
 variable "alb_ingress_https_to_port" {
-    type = number
+  type = number
 }
 
 variable "ecs_egress_cidr_blocks" {
@@ -98,28 +98,28 @@ variable "ecs_egress_cidr_blocks" {
 }
 
 variable "ecs_sg_name" {
-  type        = string
+  type = string
 }
 variable "ecs_sg_description" {
-  type        = string
+  type = string
 }
 variable "ecs_ingress_from_port" {
-  type        = number
+  type = number
 }
 variable "ecs_ingress_to_port" {
-  type        = number
+  type = number
 }
 variable "ecs_egress_from_port" {
-  type        = number
+  type = number
 }
 variable "ecs_egress_to_port" {
-  type        = number
+  type = number
 }
 variable "ingress_protocol" {
-    type = string
+  type = string
 }
 variable "egress_protocol" {
-    type = string
+  type = string
 }
 variable "alb_name" {}
 variable "alb_internal" {

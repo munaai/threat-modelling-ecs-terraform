@@ -14,10 +14,10 @@ resource "aws_ecs_service" "this" {
   desired_count   = var.desired_count
 
   network_configuration {
-  subnets         = var.subnet_ids           # list of subnet IDs
-  security_groups = var.security_group_ids   # list of security group IDs
-  assign_public_ip = true
-}
+    subnets          = var.subnet_ids         # list of subnet IDs
+    security_groups  = var.security_group_ids # list of security group IDs
+    assign_public_ip = true
+  }
 
 
   load_balancer {

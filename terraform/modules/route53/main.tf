@@ -1,6 +1,6 @@
 resource "aws_route53_record" "this" {
   zone_id = var.hosted_zone_id
-  name    = var.record_name    # e.g., app.munaibrahim.com
+  name    = var.record_name # e.g., app.munaibrahim.com
   type    = var.record_type
 
   alias {

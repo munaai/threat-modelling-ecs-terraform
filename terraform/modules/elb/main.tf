@@ -1,9 +1,9 @@
 resource "aws_lb" "this" {
-  name               = var.alb_name
-  load_balancer_type = "application"
-  subnets            = var.public_subnet_ids
-  security_groups    = var.alb_security_group_ids
-  internal           = var.alb_internal
+  name                       = var.alb_name
+  load_balancer_type         = "application"
+  subnets                    = var.public_subnet_ids
+  security_groups            = var.alb_security_group_ids
+  internal                   = var.alb_internal
   enable_deletion_protection = var.alb_deletion_protection
 }
 
