@@ -1,10 +1,21 @@
 # Threat modelling tool
+This project deploys a containerised application to **AWS ECS Fargate** using **Terraform**, with end-to-end automation via **GitHub Actions**.
 
 ##  Architechture diagram
 
 <p align="center">
   <img src="threatapp1.jpg" alt="architechtural diagram" style="width:600px"/>
 </p>
+
+## Features
+
+Fully automated infrastructure using Terraform
+Docker container pushed to Amazon ECR
+ECS Fargate service behind an ALB with HTTPS
+SSL certificate issued via ACM and validated through Route 53
+GitHub Actions workflows for:
+Docker image build & push
+Terraform plan, apply, and destroy
 
 ## Project Structure
 <pre>
@@ -31,4 +42,18 @@
         └── plan.yml
 
 </pre>
+
+## Local App Setup 💻
+### Option 1: Run Locally Without Docker
+yarn install
+yarn build
+yarn global add serve
+serve -s build
+
+Then visit: http://localhost:3000
+
+### Option 2: Run Using Docker
+
+docker build -t my-app .
+docker run -p 3000:3000 my-app
 
