@@ -2,7 +2,6 @@
 
 ## Project Structure
 <pre>
-```
 ./
 ├── app/
 ├── Dockerfile
@@ -24,7 +23,7 @@
         ├── destroy.yml
         ├── docker.yml
         └── plan.yml
-``
+
 </pre>
 ##  Architechture diagram
 
