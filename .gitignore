@@ -8,4 +8,4 @@ terraform.tfvars
 .terraform/
 terraform.tfvars
 terraform.tfvars
-*.DS_Store
+DS_Store

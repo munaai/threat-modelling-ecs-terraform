@@ -4,7 +4,7 @@ This project deploys a containerised application to **AWS ECS Fargate** using **
 ##  Architechture diagram
 
 <p align="center">
-  <img src="threatapp1.jpg" alt="architechtural diagram" style="width:600px"/>
+  <img src="threatmodelapp.jpg" alt="architechtural diagram" style="width:600px"/>
 </p>
 
 ## Features
