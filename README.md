@@ -45,15 +45,18 @@ Terraform plan, apply, and destroy
 
 ## Local App Setup 💻
 ### Option 1: Run Locally Without Docker
+<pre>
 yarn install
 yarn build
 yarn global add serve
 serve -s build
+</pre>
 
 Then visit: http://localhost:3000
 
 ### Option 2: Run Using Docker
-
+<pre>
 docker build -t my-app .
 docker run -p 3000:3000 my-app
+</pre>
 
