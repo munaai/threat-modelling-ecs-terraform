@@ -3,6 +3,6 @@
 ##  Architechture diagram
 
 <p align="center">
-  <img src="threatapp.png" alt="architechtural diagram"/>
-  <img src="threatapp-copy.png" alt="architechtural diagram"/>
+  <img src="threatapp.jpg" alt="architechtural diagram"/>
+  <img src="threatapp-copy.jpg" alt="architechtural diagram"/>
 </p>
