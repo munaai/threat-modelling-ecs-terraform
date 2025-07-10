@@ -76,5 +76,5 @@ Then visit: http://localhost:3000
 - Applies the Terraform configuration to provision or update AWS resources
 - Includes setup of the ALB, ECS, IAM, VPC Route 53 DNS records, and ACM certificate
 
-###Terraform Destroy
+### Terraform Destroy
 - Destroys all infrastructure managed by Terraform when no longer required
