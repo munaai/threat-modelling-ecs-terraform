@@ -12,21 +12,20 @@
 ├── app/
 ├── Dockerfile
 ├── terraform/
-│  ├── provider.tf
-│  ├── main.tf
-│  ├── provider.tf
-│  ├── variables.tf
-│  └── modules/
-│      ├── alb/
-       ├── acm/
-│      ├── ecs_fargate/
-│      ├── iam/
-       ├── security_groups/
-       ├── vpc/
-       └── route53/
+│   ├── main.tf
+│   ├── provider.tf
+│   ├── variables.tf
+│   └── modules/
+│       ├── acm/
+│       ├── alb/
+│       ├── ecs_fargate/
+│       ├── iam/
+│       ├── route53/
+│       ├── security_groups/
+│       └── vpc/
 └── .github/
-   └── workflows/
-       ├── docker.yml
-       ├── plan.yml
-       ├── apply.yml
-       └── destroy.yml
+    └── workflows/
+        ├── apply.yml
+        ├── destroy.yml
+        ├── docker.yml
+        └── plan.yml
