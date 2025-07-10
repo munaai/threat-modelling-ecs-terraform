@@ -6,9 +6,6 @@ on:
     workflows: ["Docker Build & Push"]
     types:
       - completed
-  push:
-    paths:
-      - 'terraform/**'
 
 env:
   AWS_REGION: eu-west-2
