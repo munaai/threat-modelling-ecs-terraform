@@ -7,6 +7,7 @@
 </p>
 
 ## Project Structure
+
 ./
 ├── app/
 ├── Dockerfile
