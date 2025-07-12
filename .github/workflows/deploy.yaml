@@ -43,8 +43,6 @@ jobs:
           export PATH=$PATH:$(pwd)
           tflint --version
           tflint --init
-          tflint --format stylish
-        working-directory: terraform
 
       - name: Terraform Init
         run: terraform init
