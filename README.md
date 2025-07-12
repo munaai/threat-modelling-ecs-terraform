@@ -4,7 +4,7 @@ This project deploys a containerised application to **AWS ECS Fargate** using **
 ##  Architechture diagram
 
 <p align="center">
-  <img src="threatmodelapp.jpg" alt="architechtural diagram" style="width:800px"/>
+  <img src="threatmodelapp.jpg" alt="architechtural diagram" style="width:700px"/>
 </p>
 
 ## Features
@@ -65,16 +65,12 @@ Then visit: http://localhost:3000
 - Builds the Docker image
 - Performs a security scan using Trivy
 - Pushes the image to Amazon ECR
-- Deploys latest image to ECS
 
-### Terraform Plan
-- Executes terraform init and terraform plan
-- Validates the configuration with TFLint
-- Conducts a security analysis using Checkov
-
-### Terraform Apply
-- Applies the Terraform configuration to provision or update AWS resources
-- Includes setup of the ALB, ECS, IAM, VPC Route 53 DNS records, and ACM certificate
+### Terraform Plan and Apply
+- Runs after a successful Docker build or when manually triggered.
+- Sets up AWS credentials and downloads terraform.tfvars from S3.
+- Runs Terraform formatting check, linter, plan, and apply.
+- Automatically provisions or updates infrastructure on AWS.
 
 ### Terraform Destroy
 - Destroys all infrastructure managed by Terraform when no longer required
