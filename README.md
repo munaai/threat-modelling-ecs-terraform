@@ -92,3 +92,4 @@ Then visit: http://localhost:3000
 <p align="center">
   <img src="terraform-destroy.jpg" alt="architechtural diagram" style="width:600px"/>
 </p>
+y
