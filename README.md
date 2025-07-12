@@ -86,10 +86,21 @@ Then visit: http://localhost:3000
 </p>
 
 ### SSL certificate
+<p align="center">
+  <img src="ssl-certificate.png" alt="architechtural diagram" style="width:600px"/>
+</p>
+
 ### Docker Build and Push to ECR
+<p align="center">
+  <img src="planandapply.jpg" alt="architechtural diagram" style="width:600px"/>
+</p>
+
 ### Terraform Deploy
+<p align="center">
+  <img src="planandapply.jpg" alt="architechtural diagram" style="width:600px"/>
+</p>
+
 ### Teraform Destroy
 <p align="center">
   <img src="terraform-destroy.jpg" alt="architechtural diagram" style="width:600px"/>
 </p>
-y
