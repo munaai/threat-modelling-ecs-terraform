@@ -82,12 +82,12 @@ Then visit: http://localhost:3000
 ## Here is a demonstration
 ### Domain page
 <p align="center">
-  <img src="Front-end.png" alt="architechtural diagram" style="width:600px"/>
+  <img src="Front-end.png" alt="architechtural diagram" style="width:800px"/>
 </p>
 
 ### SSL certificate
 <p align="center">
-  <img src="ssl-certificate.png" alt="architechtural diagram" style="width:600px"/>
+  <img src="ssl-certificate.png" alt="architechtural diagram" style="width:800px"/>
 </p>
 
 ### Docker Build and Push to ECR
