@@ -82,7 +82,7 @@ Then visit: http://localhost:3000
 ## Here is a demonstration
 ### Domain page
 <p align="center">
-  <img src="Front-end.jpg" alt="architechtural diagram" style="width:600px"/>
+  <img src="Front-end.png" alt="architechtural diagram" style="width:600px"/>
 </p>
 
 ### SSL certificate
@@ -92,15 +92,27 @@ Then visit: http://localhost:3000
 
 ### Docker Build and Push to ECR
 <p align="center">
+<<<<<<< HEAD
   <img src="planandapply.jpg" alt="architechtural diagram" style="width:600px"/>
+=======
+  <img src="build-image.png" alt="architechtural diagram" style="width:600px"/>
+>>>>>>> e8982a8 (Update README [skip ci])
 </p>
 
 ### Terraform Deploy
 <p align="center">
+<<<<<<< HEAD
   <img src="planandapply.jpg" alt="architechtural diagram" style="width:600px"/>
+=======
+  <img src="planandapply.png" alt="architechtural diagram" style="width:600px"/>
+>>>>>>> e8982a8 (Update README [skip ci])
 </p>
 
 ### Teraform Destroy
 <p align="center">
+<<<<<<< HEAD
   <img src="terraform-destroy.jpg" alt="architechtural diagram" style="width:600px"/>
+=======
+  <img src="terraform-destroy.png" alt="architechtural diagram" style="width:600px"/>
+>>>>>>> e8982a8 (Update README [skip ci])
 </p>
