@@ -4,7 +4,7 @@ This project deploys a containerised application to **AWS ECS Fargate** using **
 ##  Architechture diagram
 
 <p align="center">
-  <img src="app/threatmodelapp.jpg" alt="architechtural diagram" style="width:700px"/>
+  <img src="images/threatmodelapp.jpg" alt="architechtural diagram" style="width:700px"/>
 </p>
 
 ## Features
@@ -78,25 +78,25 @@ Then visit: http://localhost:3000
 ## Here is a demonstration
 ### Domain page
 <p align="center">
-  <img src="Front-end.png" alt="architechtural diagram" style="width:800px"/>
+  <img src="images/Front-end.png" alt="architechtural diagram" style="width:800px"/>
 </p>
 
 ### SSL certificate
 <p align="center">
-  <img src="ssl-certificate.png" alt="architechtural diagram" style="width:800px"/>
+  <img src="images/ssl-certificate.png" alt="architechtural diagram" style="width:800px"/>
 </p>
 
 ### Docker Build and Push to ECR
 <p align="center">
-  <img src="build-image.png" alt="architechtural diagram" style="width:800px"/>
+  <img src="images/build-image.png" alt="architechtural diagram" style="width:800px"/>
 </p>
 
 ### Terraform Deploy
 <p align="center">
-  <img src="planandapply.png" alt="architechtural diagram" style="width:800px"/>
+  <img src="images/planandapply.png" alt="architechtural diagram" style="width:800px"/>
 </p>
 
 ### Teraform Destroy
 <p align="center">
-  <img src="terraform-destroy.png" alt="architechtural diagram" style="width:800px"/>
+  <img src="images/terraform-destroy.png" alt="architechtural diagram" style="width:800px"/>
 </p>
