@@ -1,4 +1,4 @@
-# Threat modelling tool
+# Containerised Threat Modelling Tool on AWS ECS Fargate
 
 This project deploys a containerised application to **AWS ECS Fargate** using **Terraform**, with end-to-end automation via **GitHub Actions**.
 
