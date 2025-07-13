@@ -5,7 +5,7 @@ This project deploys a containerised application to **AWS ECS Fargate** using **
 This setup was created to **automate the deployment** of a threat modelling tool while avoiding the need to **manually provision resources** through the AWS Console. By using **Terraform** and **GitHub Actions**, the entire infrastructure and deployment process becomes **repeatable, consistent, and much faster** — reducing **human error** and saving time across development and operations.
 
 
-##  Architechture diagram
+##  Architecture diagram
 
 <p align="center">
   <img src="images/threatmodelapp.jpg" alt="architechtural diagram" style="width:700px"/>
