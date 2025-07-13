@@ -2,15 +2,31 @@
 FROM node:18-alpine AS builder  
 WORKDIR /app
 COPY . ./
-RUN   yarn install && yarn build
+RUN yarn install && yarn build
 
 # Second stage 
 FROM node:18-alpine
+
+# Create a non-root user and group
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
 WORKDIR /app
+
 RUN yarn global add serve
+
+# Copy built files from builder stage
 COPY --from=builder /app/build ./build
+
+# Change ownership to the non-root user
+RUN chown -R appuser:appgroup /app
+
+# Switch to non-root user
+USER appuser
+
 EXPOSE 3000
+
 CMD ["serve", "-s", "build", "-l", "3000"]
+
 
 
 
