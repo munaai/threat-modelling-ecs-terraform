@@ -1,5 +1,7 @@
 # Threat modelling tool
 This project deploys a containerised application to **AWS ECS Fargate** using **Terraform**, with end-to-end automation via **GitHub Actions**.
+It includes secure networking with an application load balancer, automated SSL certification via ACM, and DNS management through Route 53. 
+The goal is to reduce manual steps, ensure consistency across environments, and demonstrate how secure, scalable applications can be delivered efficiently using IaC and CI/CD pipelines.
 
 ##  Architechture diagram
 
