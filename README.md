@@ -1,7 +1,9 @@
 # Threat modelling tool
+
 This project deploys a containerised application to **AWS ECS Fargate** using **Terraform**, with end-to-end automation via **GitHub Actions**.
-It includes secure networking with an application load balancer, automated SSL certification via ACM, and DNS management through Route 53. 
-The goal is to reduce manual steps, ensure consistency across environments, and demonstrate how secure, scalable applications can be delivered efficiently using IaC and CI/CD pipelines.
+
+This setup was created to **automate the deployment** of a threat modelling tool while avoiding the need to **manually provision resources** through the AWS Console. By using Terraform and GitHub Actions, the entire infrastructure and deployment process becomes **repeatable, consistent, and much faster** — reducing **human error** and saving time across development and operations.
+
 
 ##  Architechture diagram
 
