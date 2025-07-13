@@ -2,7 +2,7 @@
 
 This project deploys a containerised application to **AWS ECS Fargate** using **Terraform**, with end-to-end automation via **GitHub Actions**.
 
-This setup was created to **automate the deployment** of a threat modelling tool while avoiding the need to **manually provision resources** through the AWS Console. By using Terraform and GitHub Actions, the entire infrastructure and deployment process becomes **repeatable, consistent, and much faster** — reducing **human error** and saving time across development and operations.
+This setup was created to **automate the deployment** of a threat modelling tool while avoiding the need to **manually provision resources** through the AWS Console. By using **Terraform** and **GitHub Actions**, the entire infrastructure and deployment process becomes **repeatable, consistent, and much faster** — reducing **human error** and saving time across development and operations.
 
 
 ##  Architechture diagram
