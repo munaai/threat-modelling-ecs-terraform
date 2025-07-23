@@ -8,7 +8,7 @@ This setup was created to **automate the deployment** of a threat modelling tool
 ##  Architecture diagram
 
 <p align="center">
-  <img src="images/threatmodelapp.jpg" alt="architechtural diagram" style="width:700px"/>
+  <img src="images/architechturediagram.gif" alt="architechtural diagram" style="width:700px"/>
 </p>
 
 ## Features
