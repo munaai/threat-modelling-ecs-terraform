@@ -42,7 +42,8 @@ jobs:
           echo "$PWD" >> $GITHUB_PATH
           tflint --version
           tflint --init --chdir=terraform
-          tflint --config=terraform/.tflint.hcl --chdir=terraform
+          tflint --chdir=terraform
+
 
 
       - name: Run Checkov
