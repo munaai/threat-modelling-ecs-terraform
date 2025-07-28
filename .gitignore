@@ -10,3 +10,4 @@ terraform.tfvars
 terraform.tfvars
 .DS_Store
 *.DS_Store
+.terraform.lock.hcl
