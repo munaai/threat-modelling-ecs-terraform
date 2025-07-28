@@ -74,6 +74,10 @@ module "elb" {
   https_listener_port     = var.https_listener_port
   https_listener_protocol = var.https_listener_protocol
   ssl_policy              = var.ssl_policy
+    http_listener_port        = var.http_listener_port
+  http_listener_protocol    = var.http_listener_protocol
+  http_redirect_status_code = var.http_redirect_status_code
+
 }
 
 module "route53" {

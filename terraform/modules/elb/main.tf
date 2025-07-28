@@ -39,3 +39,20 @@ resource "aws_lb_listener" "https" {
   }
 }
 
+resource "aws_lb_listener" "http_redirect" {
+  load_balancer_arn = aws_lb.this.arn
+  port              = var.http_listener_port
+  protocol          = var.http_listener_protocol
+
+  default_action {
+    type = "redirect"
+
+    redirect {
+      port        = var.https_listener_port
+      protocol    = "HTTPS"
+      status_code = var.http_redirect_status_code
+    }
+  }
+}
+
+

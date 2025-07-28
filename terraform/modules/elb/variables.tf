@@ -64,3 +64,24 @@ variable "https_listener_port" {
 variable "https_listener_protocol" {
   default = "HTTPS"
 }
+
+variable "http_listener_port" {
+  type        = number
+  description = "Port for HTTP listener"
+}
+
+variable "http_listener_protocol" {
+  type        = string
+  description = "Protocol for HTTP listener"
+}
+
+variable "http_redirect_status_code" {
+  type        = string
+  description = "Redirect status code (e.g., HTTP_301)"
+}
+
+variable "https_listener_port" {
+  type        = number
+  description = "Port for HTTPS listener (used in redirect)"
+}
+
