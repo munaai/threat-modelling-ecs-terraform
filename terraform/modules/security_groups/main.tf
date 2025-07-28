@@ -1,3 +1,13 @@
+terraform {
+  required_version = ">= 1.5.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
 resource "aws_security_group" "alb" {
   name        = var.alb_sg_name
   description = var.alb_sg_description

@@ -217,12 +217,6 @@ variable "record_type" {
   default = "A"
 }
 
-# ACM / TLS
-variable "certificate_arn" {
-  description = "ARN of the ACM certificate"
-  type        = string
-}
-
 variable "ssl_policy" {
   type    = string
   default = "ELBSecurityPolicy-2016-08"
