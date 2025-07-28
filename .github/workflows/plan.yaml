@@ -1,4 +1,4 @@
-name: Terraform Plan & Apply
+name: Terraform Plan
 
 on:
   workflow_dispatch:
@@ -12,7 +12,7 @@ env:
 
 jobs:
   terraform:
-    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name != 'workflow_run' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
 
     steps:
@@ -33,28 +33,35 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Format Check
-        run: |
-          find terraform -type f -name "*.tf" -exec terraform fmt -check -diff {} +
-
+        run: terraform fmt -check -diff -recursive
+        working-directory: terraform
 
       - name: Install and Run TFLint
         run: |
           curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
-          export PATH=$PATH:$(pwd)
-          tflint --version
+          echo "$PWD" >> $GITHUB_PATH
           tflint --init
+          tflint --config=terraform/.tflint.hcl terraform/
+
+      - name: Run Checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: terraform
+          framework: terraform
 
       - name: Terraform Init
         run: terraform init
         working-directory: terraform
 
       - name: Terraform Plan
-        run: terraform plan -var-file="terraform.tfvars"
+        run: terraform plan -out=tfplan -var-file="terraform.tfvars"
         working-directory: terraform
 
-      - name: Terraform Apply
-        run: terraform apply -auto-approve -var-file="terraform.tfvars"
-        working-directory: terraform
+      - name: Upload Terraform Plan Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: tfplan
+          path: terraform/tfplan
 
       - name: Summary
-        run: echo "### ✅ Terraform Plan & Apply Completed" >> $GITHUB_STEP_SUMMARY
+        run: echo "### ✅ Terraform Plan Complete" >> $GITHUB_STEP_SUMMARY
