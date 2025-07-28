@@ -33,7 +33,7 @@ jobs:
         uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Format Check
-        run: terraform fmt -check -diff -recursive
+        run: find terraform -name '*.tf' -exec terraform fmt -check -diff {} +
         working-directory: terraform
 
       - name: Install and Run TFLint
