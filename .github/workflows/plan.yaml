@@ -40,8 +40,10 @@ jobs:
         run: |
           curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
           echo "$PWD" >> $GITHUB_PATH
-          tflint --init
+          tflint --version
+          tflint --init --chdir=terraform
           tflint --config=terraform/.tflint.hcl --chdir=terraform
+
 
       - name: Run Checkov
         uses: bridgecrewio/checkov-action@master
