@@ -39,7 +39,7 @@ jobs:
       - name: Install and Run TFLint
         run: |
           curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
-          echo "$PWD" >> $GITHUB_PATH
           tflint --version
           tflint --init --chdir=terraform
-          tflin
+          tflint --chdir=terraform
+
