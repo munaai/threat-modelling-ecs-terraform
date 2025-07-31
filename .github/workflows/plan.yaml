@@ -42,32 +42,4 @@ jobs:
           echo "$PWD" >> $GITHUB_PATH
           tflint --version
           tflint --init --chdir=terraform
-          tflint --chdir=terraform
-
-
-
-      - name: Setup Checkov
-        run: pip install checkov
-
-      - name: Run Checkov with severity threshold
-        run: checkov -d terraform --soft-fail-on MEDIUM
-
-
-      - name: Terraform Init
-        run: terraform init
-        working-directory: terraform
-
-      - name: Terraform Plan
-        run: terraform plan -out=tfplan -var-file="terraform.tfvars"
-        working-directory: terraform
-
-      - name: Upload Terraform Plan Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: tfplan
-          path: terraform/tfplan
-          retention-days: 1
-
-
-      - name: Summary
-        run: echo "### ✅ Terraform Plan Complete" >> $GITHUB_STEP_SUMMARY
+          tflin
