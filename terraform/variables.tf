@@ -69,9 +69,6 @@ variable "policy_name" {
   description = "IAM policy name"
   type        = string
 }
-variable "policy_name" {
-  type = string
-}
 
 variable "ecr_repo_name" {
   description = "Name of the ECR repository"

@@ -90,11 +90,6 @@ variable "http_redirect_status_code" {
   description = "Redirect status code (e.g., HTTP_301)"
 }
 
-variable "https_listener_port" {
-  type        = number
-  description = "Port for HTTPS listener (used in redirect)"
-}
-
 variable "enable_waf" {
   description = "Whether to enable WAF for the ALB"
   type        = bool
