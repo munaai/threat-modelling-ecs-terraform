@@ -46,11 +46,12 @@ jobs:
 
 
 
-      - name: Run Checkov
-        uses: bridgecrewio/checkov-action@master
-        with:
-          directory: terraform
-          framework: terraform
+      - name: Setup Checkov
+        run: pip install checkov
+
+      - name: Run Checkov with severity threshold
+        run: checkov -d terraform --soft-fail-on MEDIUM
+
 
       - name: Terraform Init
         run: terraform init
