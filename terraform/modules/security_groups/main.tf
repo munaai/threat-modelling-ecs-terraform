@@ -18,6 +18,7 @@ resource "aws_security_group" "alb" {
     to_port     = var.alb_ingress_http_to_port
     protocol    = var.ingress_protocol
     cidr_blocks = var.alb_ingress_cidr_blocks
+    description = "Allow HTTP ingress to ALB"
   }
 
   ingress {
@@ -25,6 +26,7 @@ resource "aws_security_group" "alb" {
     to_port     = var.alb_ingress_https_to_port
     protocol    = var.ingress_protocol
     cidr_blocks = var.alb_ingress_cidr_blocks
+    description = "Allow HTTPS ingress to ALB"
   }
 
   egress {
@@ -32,6 +34,7 @@ resource "aws_security_group" "alb" {
     to_port     = 0
     protocol    = var.egress_protocol
     cidr_blocks = var.alb_ingress_cidr_blocks
+    description = "Allow all outbound traffic from ALB"
   }
 }
 
@@ -41,10 +44,11 @@ resource "aws_security_group" "ecs" {
   vpc_id      = var.vpc_id
 
   ingress {
-    from_port       = var.ecs_ingress_from_port # your container port
+    from_port       = var.ecs_ingress_from_port
     to_port         = var.ecs_ingress_to_port
     protocol        = var.ingress_protocol
     security_groups = [aws_security_group.alb.id]
+    description     = "Allow traffic from ALB to ECS tasks"
   }
 
   egress {
@@ -52,5 +56,6 @@ resource "aws_security_group" "ecs" {
     to_port     = var.ecs_egress_to_port
     protocol    = var.egress_protocol
     cidr_blocks = var.ecs_egress_cidr_blocks
+    description = "Allow ECS tasks to make outbound requests"
   }
 }

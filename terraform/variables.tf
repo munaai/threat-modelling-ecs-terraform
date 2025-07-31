@@ -69,6 +69,18 @@ variable "policy_name" {
   description = "IAM policy name"
   type        = string
 }
+variable "policy_name" {
+  type = string
+}
+
+variable "ecr_repo_name" {
+  description = "Name of the ECR repository"
+  type        = string
+}
+variable "account_id" {
+  description = "AWS account ID"
+  type        = string
+}
 
 # Security Groups
 variable "alb_sg_name" {
@@ -149,7 +161,7 @@ variable "alb_internal" {
 
 variable "alb_deletion_protection" {
   type    = bool
-  default = false
+  default = true
 }
 
 variable "target_group_name" {
@@ -190,17 +202,6 @@ variable "health_check_unhealthy_threshold" {
 variable "health_check_matcher" {
   type    = string
   default = "200"
-}
-
-# Listener
-variable "listener_port" {
-  type    = number
-  default = 80
-}
-
-variable "listener_protocol" {
-  type    = string
-  default = "HTTP"
 }
 
 # Route 53

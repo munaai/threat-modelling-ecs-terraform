@@ -4,7 +4,10 @@ module "iam" {
   role_name      = var.role_name
   assume_service = var.assume_service
   policy_name    = var.policy_name
+  account_id     = var.account_id
+  ecr_repo_name  = var.ecr_repo_name
 }
+
 module "security_groups" {
   source = "./modules/security_groups"
 
@@ -67,9 +70,6 @@ module "elb" {
   health_check_unhealthy_threshold = var.health_check_unhealthy_threshold
   health_check_matcher             = var.health_check_matcher
 
-  listener_port     = var.listener_port
-  listener_protocol = var.listener_protocol
-
   certificate_arn           = module.acm.certificate_arn
   https_listener_port       = var.https_listener_port
   https_listener_protocol   = var.https_listener_protocol
@@ -77,6 +77,13 @@ module "elb" {
   http_listener_port        = var.http_listener_port
   http_listener_protocol    = var.http_listener_protocol
   http_redirect_status_code = var.http_redirect_status_code
+
+  # WAF-related inputs
+  enable_waf      = true
+  waf_name        = "my-alb-waf"
+  waf_scope       = "REGIONAL"
+  waf_rule_name   = "AWS-AWSManagedRulesCommonRuleSet"
+  waf_metric_name = "albWAF"
 
 }
 

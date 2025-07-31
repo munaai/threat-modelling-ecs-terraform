@@ -26,7 +26,7 @@ resource "aws_ecs_service" "this" {
   network_configuration {
     subnets          = var.subnet_ids         # list of subnet IDs
     security_groups  = var.security_group_ids # list of security group IDs
-    assign_public_ip = true
+    assign_public_ip = false
   }
 
 

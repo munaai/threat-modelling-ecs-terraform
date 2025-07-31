@@ -7,7 +7,7 @@ variable "alb_internal" {
 }
 variable "alb_deletion_protection" {
   type    = bool
-  default = false
+  default = true
 }
 variable "alb_security_group_ids" {
   type = list(string)
@@ -94,4 +94,35 @@ variable "https_listener_port" {
   type        = number
   description = "Port for HTTPS listener (used in redirect)"
 }
+
+variable "enable_waf" {
+  description = "Whether to enable WAF for the ALB"
+  type        = bool
+  default     = false
+}
+
+variable "waf_name" {
+  description = "Name of the WAF Web ACL"
+  type        = string
+  default     = "alb-waf"
+}
+
+variable "waf_scope" {
+  description = "WAF scope: REGIONAL for ALB"
+  type        = string
+  default     = "REGIONAL"
+}
+
+variable "waf_rule_name" {
+  description = "Name of the WAF rule"
+  type        = string
+  default     = "AWS-AWSManagedRulesCommonRuleSet"
+}
+
+variable "waf_metric_name" {
+  description = "WAF metric name"
+  type        = string
+  default     = "albWAF"
+}
+
 

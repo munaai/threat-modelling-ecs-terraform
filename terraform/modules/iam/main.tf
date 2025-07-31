@@ -1,5 +1,6 @@
 terraform {
   required_version = ">= 1.5.0"
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -19,7 +20,7 @@ resource "aws_iam_role" "this" {
         Service = var.assume_service
       },
       Effect = "Allow",
-      Sid    = "",
+      Sid    = ""
     }]
   })
 }
@@ -38,13 +39,23 @@ resource "aws_iam_role_policy" "this" {
           "logs:PutLogEvents",
           "logs:CreateLogGroup"
         ],
-        Resource = "*"
+        Resource = [
+          format("arn:aws:logs:%s:%s:*", var.region, var.account_id)
+        ]
       },
       {
         Effect = "Allow",
         Action = [
           "ecr:GetDownloadUrlForLayer",
-          "ecr:BatchGetImage",
+          "ecr:BatchGetImage"
+        ],
+        Resource = [
+          format("arn:aws:ecr:%s:%s:repository/%s", var.region, var.account_id, var.ecr_repo_name)
+        ]
+      },
+      {
+        Effect = "Allow",
+        Action = [
           "ecr:GetAuthorizationToken"
         ],
         Resource = "*"
